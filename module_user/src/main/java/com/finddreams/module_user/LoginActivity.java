@@ -7,14 +7,14 @@ import android.widget.Button;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.base.BaseActivity;
 import com.finddreams.module_base.event.LoginStateEvent;
-import com.finddreams.module_base.utils.RouteUtils;
+import com.finddreams.module_base.utils.RouteManager;
 
 import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by lx on 17-10-25.
  */
-@Route(path = RouteUtils.User_Activity_Login)
+@Route(path = RouteManager.User_Activity_Login)
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     Button btLoginSuccess;

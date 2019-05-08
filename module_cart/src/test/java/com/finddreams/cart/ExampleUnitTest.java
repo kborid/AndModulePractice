@@ -1,4 +1,4 @@
-package com.finddreams.shoppingcart;
+package com.finddreams.cart;
 
 import org.junit.Test;
 

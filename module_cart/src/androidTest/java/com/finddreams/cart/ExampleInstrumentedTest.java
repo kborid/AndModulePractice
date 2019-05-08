@@ -1,4 +1,4 @@
-package com.finddreams.shoppingcart;
+package com.finddreams.cart;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

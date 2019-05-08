@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.base.BaseFragment;
-import com.finddreams.module_base.utils.RouteUtils;
+import com.finddreams.module_base.utils.RouteManager;
 
 /**
  * Created by lx on 17-10-24.
  */
-@Route(path = RouteUtils.Home_Fragment_Main)
+@Route(path = RouteManager.Home_Fragment_Main)
 public class HomeMainFragment extends BaseFragment {
     @Nullable
     @Override
@@ -21,10 +21,5 @@ public class HomeMainFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.home_fragment_main, null);
 
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 }

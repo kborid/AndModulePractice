@@ -1,4 +1,4 @@
-package com.finddreams.shoppingcart;
+package com.finddreams.cart;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,21 +11,17 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.base.BaseFragment;
 import com.finddreams.module_base.event.LoginStateEvent;
-import com.finddreams.module_base.utils.RouteUtils;
+import com.finddreams.module_base.utils.RouteManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * Created by lx on 17-10-24.
  */
-@Route(path = RouteUtils.ShoppingCart_Fragment_Main)
-public class ShoppingCartMainFragment extends BaseFragment {
+@Route(path = RouteManager.Cart_Fragment_Main)
+public class CartMainFragment extends BaseFragment {
     TextView tv_loginstate;
     TextView tvGoodname;
     Button btGotoGooddetail;
@@ -33,7 +29,7 @@ public class ShoppingCartMainFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.shoppingcart_fragment_main, null);
+        View rootView = inflater.inflate(R.layout.cart_fragment_main, null);
         initView(rootView);
         EventBus.getDefault().register(this);
         return rootView;
@@ -47,7 +43,7 @@ public class ShoppingCartMainFragment extends BaseFragment {
         btGotoGooddetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RouteUtils.startGoodDetailActivity(goodName);
+                RouteManager.startGoodDetailActivity(goodName);
             }
         });
 

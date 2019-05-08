@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.base.BaseFragment;
 import com.finddreams.module_base.event.LoginStateEvent;
-import com.finddreams.module_base.utils.RouteUtils;
+import com.finddreams.module_base.utils.RouteManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,7 +20,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * Created by lx on 17-10-24.
  */
-@Route(path = RouteUtils.User_Fragment_Main)
+@Route(path = RouteManager.User_Fragment_Main)
 public class UserMainFragment extends BaseFragment {
 
     private TextView tv_login_state;
@@ -41,7 +41,7 @@ public class UserMainFragment extends BaseFragment {
         bt_login_state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RouteUtils.startLoginActivity();
+                RouteManager.startLoginActivity();
             }
         });
     }

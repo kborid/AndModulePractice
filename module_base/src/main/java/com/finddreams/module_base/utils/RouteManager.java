@@ -9,40 +9,42 @@ import com.alibaba.android.arouter.launcher.ARouter;
  * 路由的工具类
  */
 
-public class RouteUtils {
-    public static final String GoodDetail_Activity_Main = "/gooddetail/main";
+public class RouteManager {
     public static final String Home_Fragment_Main = "/home/main";
     public static final String Find_Fragment_Main = "/find/main";
+    public static final String Cart_Fragment_Main = "/cart/main";
     public static final String User_Fragment_Main = "/user/main";
+
+    public static final String GoodDetail_Activity_Main = "/gooddetail/main";
     public static final String User_Activity_Login = "/user/login";
-    public static final String ShoppingCart_Fragment_Main = "/shoppingcart/main";
 
     public static final String Service_User = "/user/service";
 
     public static Fragment getFindFragment() {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(Find_Fragment_Main).navigation();
-        return fragment;
+        return (Fragment) ARouter.getInstance().build(Find_Fragment_Main).navigation();
     }
+
     public static Fragment getUserFragment() {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(User_Fragment_Main).navigation();
-        return fragment;
+        return (Fragment) ARouter.getInstance().build(User_Fragment_Main).navigation();
     }
+
     public static Fragment getHomeFragment() {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(Home_Fragment_Main).navigation();
-        return fragment;
+        return (Fragment) ARouter.getInstance().build(Home_Fragment_Main).navigation();
     }
-    public static Fragment getShoppingCartFragment() {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(ShoppingCart_Fragment_Main).navigation();
-        return fragment;
+
+    public static Fragment getCartFragment() {
+        return (Fragment) ARouter.getInstance().build(Cart_Fragment_Main).navigation();
     }
 
     /**
      * 跳转到商品详情的页面
+     *
      * @param goodName
      */
     public static void startGoodDetailActivity(String goodName) {
-        ARouter.getInstance().build(GoodDetail_Activity_Main).withString("goodName",goodName).navigation();
+        ARouter.getInstance().build(GoodDetail_Activity_Main).withString("goodName", goodName).navigation();
     }
+
     public static void startLoginActivity() {
         ARouter.getInstance().build(User_Activity_Login).navigation();
     }

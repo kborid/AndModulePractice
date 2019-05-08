@@ -8,7 +8,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
  * Created by lx on 17-10-24.
  */
 
-public class MyApplication extends Application {
+public class PRJApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -29,15 +28,25 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.alibaba:arouter-api:$rootProject.arouterVersion"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':lib_pay')
-    implementation project(':lib_share')
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:8.8.1'
+    api project(':lib_pay')
+    api project(':lib_share')
 
+    implementation "com.android.support:appcompat-v7:$rootProject.supportVerison"
+    implementation "com.android.support:support-v4:$rootProject.supportVerison"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportVerison"
+    implementation "com.android.support:design:$rootProject.supportVerison"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportVerison"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //eventbus
+    api 'org.greenrobot:eventbus:3.1.1'
+
+    //ButterKnife
+    api "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+
+    //ARouter
+    api "com.alibaba:arouter-api:$rootProject.arouterVersion"
 
 }

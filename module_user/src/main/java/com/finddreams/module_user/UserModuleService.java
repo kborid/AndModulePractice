@@ -4,13 +4,13 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.utils.IUserModuleService;
-import com.finddreams.module_base.utils.RouteUtils;
+import com.finddreams.module_base.utils.RouteManager;
 
 /**
  * Created by lx on 17-10-25.
  * 跨模块的服务调用
  */
-@Route(path = RouteUtils.Service_User)
+@Route(path = RouteManager.Service_User)
 public class UserModuleService implements IUserModuleService {
     @Override
     public String getUserAddress(String userId) {

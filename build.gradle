@@ -1,14 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
+        classpath "com.android.tools.build:gradle:3.4.0"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,21 +19,37 @@ allprojects {
         google()
         jcenter()
     }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion rootProject.supportVerison
+                }
+            }
+        }
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
 ext {
-    buildToolsVersion = localBuildToolsVersion
-    compileSdkVersion = 26
+    buildToolsVersion = "27.1.1"
+    compileSdkVersion = 27
     minSdkVersion = 17
     targetSdkVersion = 27
+    //android support
+    supportVerison = "27.1.1"
+    //java jdk
     javaVersion = JavaVersion.VERSION_1_8
-    // App dependencies version
-    supportLibraryVersion = "25.3.1"
+    //Gson
     gsonVersion = "2.8.0"
-    //需检查升级版本
+    //ARouter
     arouterVersion = "1.2.2"
     arouterProcessorVersion = "1.1.3"
+    //butter knife
+    butterKnifeVersion = "8.8.1"
 }

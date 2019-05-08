@@ -2,21 +2,17 @@ package com.finddreams.module_gooddetail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.finddreams.module_base.base.BaseActivity;
 import com.finddreams.module_base.utils.ModuleRouteService;
-import com.finddreams.module_base.utils.RouteUtils;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.finddreams.module_base.utils.RouteManager;
 
 /**
  * Created by liuxiang on 2017/10/24.
  */
-@Route(path = RouteUtils.GoodDetail_Activity_Main)
+@Route(path = RouteManager.GoodDetail_Activity_Main)
 public class GoodDetailActivity extends BaseActivity {
     TextView tvGoodName;
     TextView tv_address;
