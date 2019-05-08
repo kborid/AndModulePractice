@@ -20,7 +20,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * Created by lx on 17-10-24.
  */
-@Route(path = RouteManager.User_Fragment_Main)
+@Route(path = RouteManager.FRAGMENT_URL_USER_MAIN)
 public class UserMainFragment extends BaseFragment {
 
     private TextView tv_login_state;
@@ -28,10 +28,10 @@ public class UserMainFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.user_fragment_main, null);
         initView(rootView);
         EventBus.getDefault().register(this);
-
         return rootView;
     }
 

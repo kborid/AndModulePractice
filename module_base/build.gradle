@@ -28,7 +28,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(':lib_pay')
     api project(':lib_share')
 
     implementation "com.android.support:appcompat-v7:$rootProject.supportVerison"
@@ -48,5 +47,5 @@ dependencies {
 
     //ARouter
     api "com.alibaba:arouter-api:$rootProject.arouterVersion"
-
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterProcessorVersion"
 }

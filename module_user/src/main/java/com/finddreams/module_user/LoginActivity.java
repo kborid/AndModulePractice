@@ -14,7 +14,7 @@ import org.greenrobot.eventbus.EventBus;
 /**
  * Created by lx on 17-10-25.
  */
-@Route(path = RouteManager.User_Activity_Login)
+@Route(path = RouteManager.ACTIVITY_URL_USER)
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     Button btLoginSuccess;

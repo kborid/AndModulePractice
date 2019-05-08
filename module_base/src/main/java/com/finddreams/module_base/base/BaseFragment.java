@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 /**
  * Created by lx on 17-10-24.
  */
@@ -15,6 +17,7 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ARouter.getInstance().inject(this);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

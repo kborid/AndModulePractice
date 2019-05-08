@@ -13,13 +13,13 @@ import com.finddreams.module_base.utils.RouteManager;
 /**
  * Created by lx on 17-10-24.
  */
-@Route(path = RouteManager.Find_Fragment_Main)
+@Route(path = RouteManager.FRAGMENT_URL_FIND_MAIN)
 public class FindMainFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.find_fragment_main, null);
-
         return rootView;
     }
 }

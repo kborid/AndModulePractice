@@ -10,7 +10,7 @@ import com.finddreams.module_base.utils.RouteManager;
  * Created by lx on 17-10-25.
  * 跨模块的服务调用
  */
-@Route(path = RouteManager.Service_User)
+@Route(path = RouteManager.SERVICE_URL_USER)
 public class UserModuleService implements IUserModuleService {
     @Override
     public String getUserAddress(String userId) {
