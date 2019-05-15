@@ -1,6 +1,5 @@
 package com.finddreams.module_gooddetail;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -27,25 +26,37 @@ public class GoodDetailActivity extends BaseActivity {
     TextView tv_address;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.gooddetail_activity_main);
-        tvGoodName=findViewById(R.id.tv_good_name);
-        tv_address=findViewById(R.id.tv_address);
-        setTitle("商品详情模块");
-        initData();
+    protected int getResourceId() {
+        return R.layout.gooddetail_activity_main;
     }
 
-    private void initData() {
-        Intent intent = getIntent();
-        String goodName = intent.getStringExtra("goodName");
-        TestBean testBean = (TestBean) intent.getSerializableExtra("detail");
-        System.out.println(goodName);
-        System.out.println(testBean);
+    @Override
+    protected void initViews() {
+        tvGoodName = findViewById(R.id.tv_good_name);
+        tv_address = findViewById(R.id.tv_address);
+    }
 
-        tvGoodName.setText(testBean.getName());
-        tvGoodName.append("\n");
-        tvGoodName.append(testBean.getDetail());
-        tv_address.setText("用户所在地址:"+ ModuleRouteService.getUserAddress("123"));
+    @Override
+    protected void initParams() {
+        super.initParams();
+        setTitle("商品详情模块");
+    }
+
+    @Override
+    protected void dealIntent() {
+        super.dealIntent();
+        Bundle bundle = getIntent().getExtras();
+        if (null != bundle) {
+            String goodName = bundle.getString("goodName");
+            TestBean testBean = (TestBean) bundle.getSerializable("detail");
+            System.out.println(goodName);
+            System.out.println(testBean);
+            if (null != testBean) {
+                tvGoodName.setText(testBean.getName());
+                tvGoodName.append("\n");
+                tvGoodName.append(testBean.getDetail());
+            }
+        }
+        tv_address.setText("用户所在地址:" + ModuleRouteService.getUserAddress("123"));
     }
 }

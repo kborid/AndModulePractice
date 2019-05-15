@@ -1,6 +1,5 @@
 package com.finddreams.module_user;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,18 +20,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     Button btLoginFail;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_login);
-        initView();
-        setTitle("登录模块");
+    protected int getResourceId() {
+        return R.layout.user_activity_login;
     }
 
-    private void initView() {
+    @Override
+    protected void initViews() {
         btLoginSuccess = findViewById(R.id.bt_login_success);
         btLoginFail = findViewById(R.id.bt_login_fail);
         btLoginFail.setOnClickListener(this);
         btLoginSuccess.setOnClickListener(this);
+    }
+
+    @Override
+    protected void initParams() {
+        super.initParams();
+        setTitle("登录模块");
     }
 
     @Override
