@@ -1,10 +1,7 @@
 package com.finddreams.cart;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,20 +24,17 @@ public class CartMainFragment extends BaseFragment {
     TextView tvGoodname;
     Button btGotoGooddetail;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.cart_fragment_main, null);
-        initView(rootView);
-        EventBus.getDefault().register(this);
-        return rootView;
+    protected int getLayoutResId() {
+        return R.layout.cart_fragment_main;
     }
 
-    private void initView(View rootView) {
-        tvGoodname = rootView.findViewById(R.id.tv_goodname);
-        tv_loginstate = rootView.findViewById(R.id.tv_loginstate);
-        btGotoGooddetail = rootView.findViewById(R.id.bt_goto_gooddetail);
+    @Override
+    protected void initEventAndData(Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
+        tvGoodname = mRootView.findViewById(R.id.tv_goodname);
+        tv_loginstate = mRootView.findViewById(R.id.tv_loginstate);
+        btGotoGooddetail = mRootView.findViewById(R.id.bt_goto_gooddetail);
         final String goodName = tvGoodname.getText().toString();
         btGotoGooddetail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +43,9 @@ public class CartMainFragment extends BaseFragment {
                 testBean.setName("MacBook Pro");
                 testBean.setDetail("MacBook Pro, make in USA, personal computer, popular!!");
                 testBean.setPrice(20000);
-                RouteManager.startGoodDetailActivity(getContext(), goodName, testBean);
+                RouteManager.startGoodDetailActivity(getActivity(), goodName, testBean);
             }
         });
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

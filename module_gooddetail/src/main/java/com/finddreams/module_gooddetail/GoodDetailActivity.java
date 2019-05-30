@@ -1,6 +1,7 @@
 package com.finddreams.module_gooddetail;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -26,25 +27,15 @@ public class GoodDetailActivity extends BaseActivity {
     TextView tv_address;
 
     @Override
-    protected int getResourceId() {
+    protected int getLayoutResId() {
         return R.layout.gooddetail_activity_main;
     }
 
     @Override
-    protected void initViews() {
+    protected void initEventAndData(@Nullable Bundle savedInstanceState) {
         tvGoodName = findViewById(R.id.tv_good_name);
         tv_address = findViewById(R.id.tv_address);
-    }
-
-    @Override
-    protected void initParams() {
-        super.initParams();
         setTitle("商品详情模块");
-    }
-
-    @Override
-    protected void dealIntent() {
-        super.dealIntent();
         Bundle bundle = getIntent().getExtras();
         if (null != bundle) {
             String goodName = bundle.getString("goodName");

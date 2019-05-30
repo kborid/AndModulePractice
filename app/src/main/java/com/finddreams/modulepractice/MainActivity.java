@@ -1,5 +1,7 @@
 package com.finddreams.modulepractice;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup;
@@ -14,10 +16,6 @@ import butterknife.BindView;
 
 import static com.finddreams.module_base.utils.RouteManager.FRAGMENT_URL_MAIN;
 
-/**
- * Created by lx on 17-10-24.
- */
-
 public class MainActivity extends BaseActivity {
     @BindView(R.id.viewPager)
     ViewPager viewPager;
@@ -25,34 +23,15 @@ public class MainActivity extends BaseActivity {
     RadioGroup radioGroup;
 
     @Override
-    protected int getResourceId() {
+    protected int getLayoutResId() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected void initViews() {
+    protected void initEventAndData(@Nullable Bundle savedInstanceState) {
         initViewPager();
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_home:
-                        viewPager.setCurrentItem(0, false);
-                        break;
-                    case R.id.rb_find:
-                        viewPager.setCurrentItem(1, false);
-                        break;
-                    case R.id.rb_cart:
-                        viewPager.setCurrentItem(2, false);
-                        break;
-                    case R.id.rb_user:
-                        viewPager.setCurrentItem(3, false);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+        setListener();
+        viewPager.setCurrentItem(1);
     }
 
     private void initViewPager() {
@@ -62,6 +41,9 @@ public class MainActivity extends BaseActivity {
         }
         viewPager.setOffscreenPageLimit(fragmentList.size());
         viewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(), fragmentList));
+    }
+
+    private void setListener() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -76,6 +58,28 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int index = 0;
+                switch (checkedId) {
+                    case R.id.rb_home:
+                        index = 0;
+                        break;
+                    case R.id.rb_find:
+                        index = 1;
+                        break;
+                    case R.id.rb_cart:
+                        index = 2;
+                        break;
+                    case R.id.rb_user:
+                        index = 3;
+                        break;
+                }
+                viewPager.setCurrentItem(index, true);
             }
         });
     }

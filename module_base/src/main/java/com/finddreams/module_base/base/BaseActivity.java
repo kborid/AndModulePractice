@@ -11,20 +11,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        ARouter.getInstance().inject(this);
-        setContentView(getResourceId());
+        setContentView(getLayoutResId());
         ButterKnife.bind(this);
-        initViews();
-        initParams();
+        initEventAndData(savedInstanceState);
     }
 
-    protected abstract int getResourceId();
+    protected abstract int getLayoutResId();
 
-    protected void initParams() {
-        dealIntent();
-    }
-
-    protected void dealIntent() {
-    }
-
-    protected abstract void initViews();
+    protected abstract void initEventAndData(@Nullable Bundle savedInstanceState);
 }

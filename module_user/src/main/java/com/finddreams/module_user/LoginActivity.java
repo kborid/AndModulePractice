@@ -1,5 +1,7 @@
 package com.finddreams.module_user;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,25 +22,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     Button btLoginFail;
 
     @Override
-    protected int getResourceId() {
-        return R.layout.user_activity_login;
-    }
-
-    @Override
-    protected void initViews() {
-        btLoginSuccess = findViewById(R.id.bt_login_success);
-        btLoginFail = findViewById(R.id.bt_login_fail);
-        btLoginFail.setOnClickListener(this);
-        btLoginSuccess.setOnClickListener(this);
-    }
-
-    @Override
-    protected void initParams() {
-        super.initParams();
-        setTitle("登录模块");
-    }
-
-    @Override
     public void onClick(View view) {
 //        switch (view.getId()){
 //            case R.id.bt_login_success:
@@ -53,5 +36,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             EventBus.getDefault().post(new LoginStateEvent(false));
         }
         finish();
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.user_activity_login;
+    }
+
+    @Override
+    protected void initEventAndData(@Nullable Bundle savedInstanceState) {
+        btLoginSuccess = findViewById(R.id.bt_login_success);
+        btLoginFail = findViewById(R.id.bt_login_fail);
+        btLoginFail.setOnClickListener(this);
+        btLoginSuccess.setOnClickListener(this);
+        setTitle("登录模块");
     }
 }
